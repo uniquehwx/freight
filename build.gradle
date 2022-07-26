@@ -1,0 +1,90 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    apply plugin: 'maven'
+    group = 'com.bizcenter.freight'
+    version = '1.0'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    ext {
+        swagger2Version = '2.9.2'
+        springCloudVersion = 'Finchley.RELEASE'
+        baseFrameworkVersion = '1.0'
+    }
+    /** 更改每个工程的默认打包方式 start**/
+    project(':freight-api') {
+        bootJar.enabled = false
+        jar.enabled = true
+    }
+    project(':freight-domain') {
+        bootJar.enabled = false
+        jar.enabled = true
+    }
+    project(':freight-infrastructure') {
+        bootJar.enabled = false
+        jar.enabled = true
+    }
+    project(':freight-appserver') {
+        install {
+            dependsOn bootJar
+        }
+    }
+    /** 更改每个工程的默认打包方式 end**/
+    dependencies {
+        compile 'com.google.guava:guava:25.0-jre'
+        compileOnly('org.projectlombok:lombok')
+        compile "org.springframework.boot:spring-boot-devtools"
+        //swagger begin
+        compile("io.springfox:springfox-swagger2:${swagger2Version}")
+        compile("io.springfox:springfox-swagger-ui:${swagger2Version}")
+        /**以下两个jar是修复错误而引入的高版本**/
+        compile("io.swagger:swagger-annotations:1.5.21")
+        compile("io.swagger:swagger-models:1.5.21")
+        //swagger end;
+        compile("com.bitsun.core:bitsun-core-framework:${baseFrameworkVersion}") {
+            exclude group: "org.slf4j"
+        }
+        compile 'org.postgresql:postgresql:42.2.5+'
+        //compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+        compile 'org.springframework.boot:spring-boot-starter-actuator'
+        //compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
+        //compile "org.springframework.cloud:spring-cloud-starter-zipkin"
+        testCompile 'junit:junit:4.12'
+        testCompile 'org.mockito:mockito-all:1.9.5'
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}

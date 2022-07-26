@@ -1,0 +1,6 @@
+description 'freight-domain'
+
+dependencies {
+    compile project(':freight-infrastructure')
+    compile project(':freight-api')
+}

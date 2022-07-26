@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bizcenter.freight.infrastructure.persistence.dao.AirFlightMapper">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.AirFlightPo" id="airFlightMap">
+        <id property="id" column="id"/>
+        <result property="companyNo" column="company_no" />
+        <result property="flightNo" column="flight_no" />
+        <result property="airCompanyCode" column="air_company_code" />
+        <result property="freightStation" column="freight_station" />
+        <result property="departurePortCode" column="departure_port_code" />
+        <result property="departurePort" column="departure_port" />
+        <result property="destinationPortCode" column="destination_port_code" />
+        <result property="destinationPort" column="destination_port" />
+        <result property="flightCode" column="flight_code" />
+        <result property="schedule" column="schedule" />
+        <result property="departureTime" column="departure_time" />
+        <result property="arrivalTime" column="arrival_time" />
+        <result property="closingTime" column="closing_time" />
+        <result property="closingDays" column="closing_days" />
+        <result property="model" column="model" />
+        <result property="planeType" column="plane_type" />
+        <result property="tenantId" column="tenant_id" />
+        <result property="appId" column="app_id" />
+        <result property="modifyTime" column="modify_time" />
+        <result property="modifyUserName" column="modify_user_name" />
+        <result property="modifyRealName" column="modify_real_name" />
+        <result property="modifyUserId" column="modify_user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="createUserName" column="create_user_name" />
+        <result property="createRealName" column="create_real_name" />
+        <result property="createUserId" column="create_user_id" />
+        <result property="deleted" column="deleted" />
+        <result property="bg" column="bg" />
+    </resultMap>
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.AirFlightPo" id="airFlightAliasMap">
+        <id property="id" column="id"/>
+        <result property="companyNo" column="lc_air_flight_company_no" />
+        <result property="flightNo" column="lc_air_flight_flight_no" />
+        <result property="airCompanyCode" column="lc_air_flight_air_company_code" />
+        <result property="freightStation" column="lc_air_flight_freight_station" />
+        <result property="departurePortCode" column="lc_air_flight_departure_port_code" />
+        <result property="departurePort" column="lc_air_flight_departure_port" />
+        <result property="destinationPortCode" column="lc_air_flight_destination_port_code" />
+        <result property="destinationPort" column="lc_air_flight_destination_port" />
+        <result property="flightCode" column="lc_air_flight_flight_code" />
+        <result property="schedule" column="lc_air_flight_schedule" />
+        <result property="departureTime" column="lc_air_flight_departure_time" />
+        <result property="arrivalTime" column="lc_air_flight_arrival_time" />
+        <result property="closingTime" column="lc_air_flight_closing_time" />
+        <result property="closingDays" column="lc_air_flight_closing_days" />
+        <result property="model" column="lc_air_flight_model" />
+        <result property="planeType" column="lc_air_flight_plane_type" />
+        <result property="tenantId" column="lc_air_flight_tenant_id" />
+        <result property="appId" column="lc_air_flight_app_id" />
+        <result property="modifyTime" column="lc_air_flight_modify_time" />
+        <result property="modifyUserName" column="lc_air_flight_modify_user_name" />
+        <result property="modifyRealName" column="lc_air_flight_modify_real_name" />
+        <result property="modifyUserId" column="lc_air_flight_modify_user_id" />
+        <result property="createTime" column="lc_air_flight_create_time" />
+        <result property="createUserName" column="lc_air_flight_create_user_name" />
+        <result property="createRealName" column="lc_air_flight_create_real_name" />
+        <result property="createUserId" column="lc_air_flight_create_user_id" />
+        <result property="deleted" column="lc_air_flight_deleted" />
+        <result property="bg" column="lc_air_flight_bg" />
+    </resultMap>
+    <sql id="airFlightColumns">
+         ${alias}.id, ${alias}.company_no, ${alias}.flight_no, ${alias}.air_company_code, ${alias}.freight_station, ${alias}.departure_port_code, ${alias}.departure_port, ${alias}.destination_port_code, ${alias}.destination_port, ${alias}.flight_code, ${alias}.schedule, ${alias}.departure_time, ${alias}.arrival_time, ${alias}.closing_time, ${alias}.closing_days, ${alias}.model, ${alias}.plane_type, ${alias}.tenant_id, ${alias}.modify_time, ${alias}.modify_user_name, ${alias}.modify_real_name, ${alias}.modify_user_id, ${alias}.create_time, ${alias}.create_user_name, ${alias}.create_real_name, ${alias}.create_user_id, ${alias}.deleted, ${alias}.bg
+    </sql>
+    <sql id="airFlightAliasColumns">
+         ${alias}.id lc_air_flight_id, ${alias}.company_no lc_air_flight_company_no, ${alias}.flight_no lc_air_flight_flight_no, ${alias}.air_company_code lc_air_flight_air_company_code, ${alias}.freight_station lc_air_flight_freight_station, ${alias}.departure_port_code lc_air_flight_departure_port_code, ${alias}.departure_port lc_air_flight_departure_port, ${alias}.destination_port_code lc_air_flight_destination_port_code, ${alias}.destination_port lc_air_flight_destination_port, ${alias}.flight_code lc_air_flight_flight_code, ${alias}.schedule lc_air_flight_schedule, ${alias}.departure_time lc_air_flight_departure_time, ${alias}.arrival_time lc_air_flight_arrival_time, ${alias}.closing_time lc_air_flight_closing_time, ${alias}.closing_days lc_air_flight_closing_days, ${alias}.model lc_air_flight_model, ${alias}.plane_type lc_air_flight_plane_type, ${alias}.tenant_id lc_air_flight_tenant_id, ${alias}.modify_time lc_air_flight_modify_time, ${alias}.modify_user_name lc_air_flight_modify_user_name, ${alias}.modify_real_name lc_air_flight_modify_real_name, ${alias}.modify_user_id lc_air_flight_modify_user_id, ${alias}.create_time lc_air_flight_create_time, ${alias}.create_user_name lc_air_flight_create_user_name, ${alias}.create_real_name lc_air_flight_create_real_name, ${alias}.create_user_id lc_air_flight_create_user_id, ${alias}.deleted lc_air_flight_deleted, ${alias}.bg lc_air_flight_bg
+    </sql>
+</mapper>

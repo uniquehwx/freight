@@ -1,0 +1,6 @@
+rootProject.name = 'freight'
+
+include 'freight-api'
+include ':freight-appserver'
+include ':freight-domain'
+include ':freight-infrastructure'

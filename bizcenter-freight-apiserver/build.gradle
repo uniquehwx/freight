@@ -1,0 +1,7 @@
+description 'freight-appserver'
+
+dependencies {
+    compile project(':freight-api')
+    compile project(':freight-infrastructure')
+    compile project(':freight-domain')
+}

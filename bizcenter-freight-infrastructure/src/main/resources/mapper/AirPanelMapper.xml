@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bizcenter.freight.infrastructure.persistence.dao.AirPanelMapper">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.AirPanelPo" id="airPanelMap">
+        <id property="id" column="id"/>
+        <result property="airCompanyCode" column="air_company_code" />
+        <result property="model" column="model" />
+        <result property="panelTypeCode" column="panel_type_code" />
+        <result property="altName" column="alt_name" />
+        <result property="cubicMeter" column="cubic_meter" />
+        <result property="panelLong" column="panel_long" />
+        <result property="panelWide" column="panel_wide" />
+        <result property="panelHigh" column="panel_high" />
+        <result property="panelSize" column="panel_size" typeHandler="com.bitsun.core.common.mybatis.handler.JsonTypeHandler"/>
+        <result property="weightLimit" column="weight_limit" />
+        <result property="tenantId" column="tenant_id" />
+        <result property="appId" column="app_id" />
+        <result property="modifyTime" column="modify_time" />
+        <result property="modifyUserName" column="modify_user_name" />
+        <result property="modifyRealName" column="modify_real_name" />
+        <result property="modifyUserId" column="modify_user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="createUserName" column="create_user_name" />
+        <result property="createRealName" column="create_real_name" />
+        <result property="createUserId" column="create_user_id" />
+        <result property="deleted" column="deleted" />
+        <result property="bg" column="bg" />
+    </resultMap>
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.AirPanelPo" id="airPanelAliasMap">
+        <id property="id" column="id"/>
+        <result property="airCompanyCode" column="lc_air_panel_air_company_code" />
+        <result property="model" column="lc_air_panel_model" />
+        <result property="panelTypeCode" column="lc_air_panel_panel_type_code" />
+        <result property="altName" column="lc_air_panel_alt_name" />
+        <result property="cubicMeter" column="lc_air_panel_cubic_meter" />
+        <result property="panelLong" column="lc_air_panel_panel_long" />
+        <result property="panelWide" column="lc_air_panel_panel_wide" />
+        <result property="panelHigh" column="lc_air_panel_panel_high" />
+        <result property="panelSize" column="lc_air_panel_panel_size" typeHandler="com.bitsun.core.common.mybatis.handler.JsonTypeHandler"/>
+        <result property="weightLimit" column="lc_air_panel_weight_limit" />
+        <result property="tenantId" column="lc_air_panel_tenant_id" />
+        <result property="appId" column="lc_air_panel_app_id" />
+        <result property="modifyTime" column="lc_air_panel_modify_time" />
+        <result property="modifyUserName" column="lc_air_panel_modify_user_name" />
+        <result property="modifyRealName" column="lc_air_panel_modify_real_name" />
+        <result property="modifyUserId" column="lc_air_panel_modify_user_id" />
+        <result property="createTime" column="lc_air_panel_create_time" />
+        <result property="createUserName" column="lc_air_panel_create_user_name" />
+        <result property="createRealName" column="lc_air_panel_create_real_name" />
+        <result property="createUserId" column="lc_air_panel_create_user_id" />
+        <result property="deleted" column="lc_air_panel_deleted" />
+        <result property="bg" column="lc_air_panel_bg" />
+    </resultMap>
+    <sql id="airPanelColumns">
+         ${alias}.id, ${alias}.air_company_code, ${alias}.model, ${alias}.panel_type_code, ${alias}.alt_name, ${alias}.cubic_meter, ${alias}.panel_long, ${alias}.panel_wide, ${alias}.panel_high, ${alias}.panel_size, ${alias}.weight_limit, ${alias}.tenant_id, ${alias}.modify_time, ${alias}.modify_user_name, ${alias}.modify_real_name, ${alias}.modify_user_id, ${alias}.create_time, ${alias}.create_user_name, ${alias}.create_real_name, ${alias}.create_user_id, ${alias}.deleted, ${alias}.bg
+    </sql>
+    <sql id="airPanelAliasColumns">
+         ${alias}.id lc_air_panel_id, ${alias}.air_company_code lc_air_panel_air_company_code, ${alias}.model lc_air_panel_model, ${alias}.panel_type_code lc_air_panel_panel_type_code, ${alias}.alt_name lc_air_panel_alt_name, ${alias}.cubic_meter lc_air_panel_cubic_meter, ${alias}.panel_long lc_air_panel_panel_long, ${alias}.panel_wide lc_air_panel_panel_wide, ${alias}.panel_high lc_air_panel_panel_high, ${alias}.panel_size lc_air_panel_panel_size, ${alias}.weight_limit lc_air_panel_weight_limit, ${alias}.tenant_id lc_air_panel_tenant_id, ${alias}.modify_time lc_air_panel_modify_time, ${alias}.modify_user_name lc_air_panel_modify_user_name, ${alias}.modify_real_name lc_air_panel_modify_real_name, ${alias}.modify_user_id lc_air_panel_modify_user_id, ${alias}.create_time lc_air_panel_create_time, ${alias}.create_user_name lc_air_panel_create_user_name, ${alias}.create_real_name lc_air_panel_create_real_name, ${alias}.create_user_id lc_air_panel_create_user_id, ${alias}.deleted lc_air_panel_deleted, ${alias}.bg lc_air_panel_bg
+    </sql>
+</mapper>

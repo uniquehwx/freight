@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bizcenter.freight.infrastructure.persistence.dao.WhOutOrderDetailMapper">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.WhOutOrderDetailPo" id="whOutOrderDetailMap">
+        <id property="id" column="id"/>
+        <result property="tenantId" column="tenant_id" />
+        <result property="appId" column="app_id" />
+        <result property="modifyTime" column="modify_time" />
+        <result property="modifyUserName" column="modify_user_name" />
+        <result property="modifyUserId" column="modify_user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="createUserName" column="create_user_name" />
+        <result property="createUserId" column="create_user_id" />
+        <result property="deleted" column="deleted" />
+        <result property="bg" column="bg" />
+        <result property="isvId" column="isv_id" />
+        <result property="createRealName" column="create_real_name" />
+        <result property="modifyRealName" column="modify_real_name" />
+        <result property="outOrderId" column="out_order_id" />
+        <result property="inStorageNo" column="in_storage_no" />
+        <result property="trayNo" column="tray_no" />
+        <result property="quantity" column="quantity" />
+        <result property="volume" column="volume" />
+        <result property="weight" column="weight" />
+        <result property="images" column="images" />
+        <result property="licensePlateNumber" column="license_plate_number" />
+        <result property="sealNo" column="seal_no" />
+        <result property="driverName" column="driver_name" />
+        <result property="remark" column="remark" />
+        <result property="userDef1" column="user_def1" />
+        <result property="userDef2" column="user_def2" />
+        <result property="supplierNo" column="supplier_no" />
+        <result property="outOrderNo" column="out_order_no" />
+    </resultMap>
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.WhOutOrderDetailPo" id="whOutOrderDetailAliasMap">
+        <id property="id" column="id"/>
+        <result property="tenantId" column="lc_wh_out_order_detail_tenant_id" />
+        <result property="appId" column="lc_wh_out_order_detail_app_id" />
+        <result property="modifyTime" column="lc_wh_out_order_detail_modify_time" />
+        <result property="modifyUserName" column="lc_wh_out_order_detail_modify_user_name" />
+        <result property="modifyUserId" column="lc_wh_out_order_detail_modify_user_id" />
+        <result property="createTime" column="lc_wh_out_order_detail_create_time" />
+        <result property="createUserName" column="lc_wh_out_order_detail_create_user_name" />
+        <result property="createUserId" column="lc_wh_out_order_detail_create_user_id" />
+        <result property="deleted" column="lc_wh_out_order_detail_deleted" />
+        <result property="bg" column="lc_wh_out_order_detail_bg" />
+        <result property="isvId" column="lc_wh_out_order_detail_isv_id" />
+        <result property="createRealName" column="lc_wh_out_order_detail_create_real_name" />
+        <result property="modifyRealName" column="lc_wh_out_order_detail_modify_real_name" />
+        <result property="outOrderId" column="lc_wh_out_order_detail_out_order_id" />
+        <result property="inStorageNo" column="lc_wh_out_order_detail_in_storage_no" />
+        <result property="trayNo" column="lc_wh_out_order_detail_tray_no" />
+        <result property="quantity" column="lc_wh_out_order_detail_quantity" />
+        <result property="volume" column="lc_wh_out_order_detail_volume" />
+        <result property="weight" column="lc_wh_out_order_detail_weight" />
+        <result property="images" column="lc_wh_out_order_detail_images" />
+        <result property="licensePlateNumber" column="lc_wh_out_order_detail_license_plate_number" />
+        <result property="sealNo" column="lc_wh_out_order_detail_seal_no" />
+        <result property="driverName" column="lc_wh_out_order_detail_driver_name" />
+        <result property="remark" column="lc_wh_out_order_detail_remark" />
+        <result property="userDef1" column="lc_wh_out_order_detail_user_def1" />
+        <result property="userDef2" column="lc_wh_out_order_detail_user_def2" />
+        <result property="supplierNo" column="lc_wh_out_order_detail_supplier_no" />
+        <result property="outOrderNo" column="lc_wh_out_order_detail_out_order_no" />
+    </resultMap>
+    <sql id="whOutOrderDetailColumns">
+         ${alias}.id, ${alias}.tenant_id, ${alias}.modify_time, ${alias}.modify_user_name, ${alias}.modify_user_id, ${alias}.create_time, ${alias}.create_user_name, ${alias}.create_user_id, ${alias}.deleted, ${alias}.bg, ${alias}.isv_id, ${alias}.create_real_name, ${alias}.modify_real_name, ${alias}.out_order_id, ${alias}.in_storage_no, ${alias}.tray_no, ${alias}.quantity, ${alias}.volume, ${alias}.weight, ${alias}.images, ${alias}.license_plate_number, ${alias}.seal_no, ${alias}.driver_name, ${alias}.remark, ${alias}.user_def1, ${alias}.user_def2, ${alias}.supplier_no, ${alias}.out_order_no
+    </sql>
+    <sql id="whOutOrderDetailAliasColumns">
+         ${alias}.id lc_wh_out_order_detail_id, ${alias}.tenant_id lc_wh_out_order_detail_tenant_id, ${alias}.modify_time lc_wh_out_order_detail_modify_time, ${alias}.modify_user_name lc_wh_out_order_detail_modify_user_name, ${alias}.modify_user_id lc_wh_out_order_detail_modify_user_id, ${alias}.create_time lc_wh_out_order_detail_create_time, ${alias}.create_user_name lc_wh_out_order_detail_create_user_name, ${alias}.create_user_id lc_wh_out_order_detail_create_user_id, ${alias}.deleted lc_wh_out_order_detail_deleted, ${alias}.bg lc_wh_out_order_detail_bg, ${alias}.isv_id lc_wh_out_order_detail_isv_id, ${alias}.create_real_name lc_wh_out_order_detail_create_real_name, ${alias}.modify_real_name lc_wh_out_order_detail_modify_real_name, ${alias}.out_order_id lc_wh_out_order_detail_out_order_id, ${alias}.in_storage_no lc_wh_out_order_detail_in_storage_no, ${alias}.tray_no lc_wh_out_order_detail_tray_no, ${alias}.quantity lc_wh_out_order_detail_quantity, ${alias}.volume lc_wh_out_order_detail_volume, ${alias}.weight lc_wh_out_order_detail_weight, ${alias}.images lc_wh_out_order_detail_images, ${alias}.license_plate_number lc_wh_out_order_detail_license_plate_number, ${alias}.seal_no lc_wh_out_order_detail_seal_no, ${alias}.driver_name lc_wh_out_order_detail_driver_name, ${alias}.remark lc_wh_out_order_detail_remark, ${alias}.user_def1 lc_wh_out_order_detail_user_def1, ${alias}.user_def2 lc_wh_out_order_detail_user_def2, ${alias}.supplier_no lc_wh_out_order_detail_supplier_no, ${alias}.out_order_no lc_wh_out_order_detail_out_order_no
+    </sql>
+</mapper>

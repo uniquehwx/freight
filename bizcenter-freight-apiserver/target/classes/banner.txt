@@ -1,0 +1,9 @@
+       *             **
+   *********       **     *
+   *   *   *     **********
+   *********                *
+       *         ***********
+       *         *         *
+       *         ***********
+ <<<<<<<${AnsiColor.GREEN}freight${AnsiColor.BLACK}>>>>>>>
+${AnsiColor.GREEN}:: Powered by hwx 2022:: ${AnsiStyle.FAINT}${AnsiColor.BLACK} 物流 ${AnsiStyle.NORMAL}

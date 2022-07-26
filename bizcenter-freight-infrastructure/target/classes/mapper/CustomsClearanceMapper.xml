@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bizcenter.freight.infrastructure.persistence.dao.CustomsClearanceMapper">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.CustomsClearancePo" id="customsClearanceMap">
+        <id property="id" column="id"/>
+        <result property="status" column="status" />
+        <result property="orderNo" column="order_no" />
+        <result property="customerNo" column="customer_no" />
+        <result property="flightNumber" column="flight_number" />
+        <result property="customerCode" column="customer_code" />
+        <result property="customerName" column="customer_name" />
+        <result property="financialOrgCode" column="financial_org_code" />
+        <result property="departCode" column="depart_code" />
+        <result property="addedServiceNo" column="added_service_no" />
+        <result property="busType" column="bus_type" />
+        <result property="orderSource" column="order_source" />
+        <result property="billlandingNo" column="billlanding_no" />
+        <result property="remark" column="remark" />
+        <result property="serviceCompletionTime" column="service_completion_time" />
+        <result property="userDef2" column="user_def2" />
+        <result property="tenantId" column="tenant_id" />
+        <result property="appId" column="app_id" />
+        <result property="modifyTime" column="modify_time" />
+        <result property="modifyUserName" column="modify_user_name" />
+        <result property="modifyUserId" column="modify_user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="createUserName" column="create_user_name" />
+        <result property="createUserId" column="create_user_id" />
+        <result property="deleted" column="deleted" />
+        <result property="bg" column="bg" />
+        <result property="isvId" column="isv_id" />
+        <result property="createRealName" column="create_real_name" />
+        <result property="modifyRealName" column="modify_real_name" />
+        <result property="type" column="type" />
+        <result property="orderSourceFinancial" column="order_source_financial" />
+        <result property="initCreatDepart" column="init_creat_depart" />
+        <result property="mainOrderNo" column="main_order_no" />
+    </resultMap>
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.CustomsClearancePo" id="customsClearanceAliasMap">
+        <id property="id" column="id"/>
+        <result property="status" column="lc_customs_clearance_status" />
+        <result property="orderNo" column="lc_customs_clearance_order_no" />
+        <result property="customerNo" column="lc_customs_clearance_customer_no" />
+        <result property="flightNumber" column="lc_customs_clearance_flight_number" />
+        <result property="customerCode" column="lc_customs_clearance_customer_code" />
+        <result property="customerName" column="lc_customs_clearance_customer_name" />
+        <result property="financialOrgCode" column="lc_customs_clearance_financial_org_code" />
+        <result property="departCode" column="lc_customs_clearance_depart_code" />
+        <result property="addedServiceNo" column="lc_customs_clearance_added_service_no" />
+        <result property="busType" column="lc_customs_clearance_bus_type" />
+        <result property="orderSource" column="lc_customs_clearance_order_source" />
+        <result property="billlandingNo" column="lc_customs_clearance_billlanding_no" />
+        <result property="remark" column="lc_customs_clearance_remark" />
+        <result property="serviceCompletionTime" column="lc_customs_clearance_service_completion_time" />
+        <result property="userDef2" column="lc_customs_clearance_user_def2" />
+        <result property="tenantId" column="lc_customs_clearance_tenant_id" />
+        <result property="appId" column="lc_customs_clearance_app_id" />
+        <result property="modifyTime" column="lc_customs_clearance_modify_time" />
+        <result property="modifyUserName" column="lc_customs_clearance_modify_user_name" />
+        <result property="modifyUserId" column="lc_customs_clearance_modify_user_id" />
+        <result property="createTime" column="lc_customs_clearance_create_time" />
+        <result property="createUserName" column="lc_customs_clearance_create_user_name" />
+        <result property="createUserId" column="lc_customs_clearance_create_user_id" />
+        <result property="deleted" column="lc_customs_clearance_deleted" />
+        <result property="bg" column="lc_customs_clearance_bg" />
+        <result property="isvId" column="lc_customs_clearance_isv_id" />
+        <result property="createRealName" column="lc_customs_clearance_create_real_name" />
+        <result property="modifyRealName" column="lc_customs_clearance_modify_real_name" />
+        <result property="type" column="lc_customs_clearance_type" />
+        <result property="orderSourceFinancial" column="lc_customs_clearance_order_source_financial" />
+        <result property="initCreatDepart" column="lc_customs_clearance_init_creat_depart" />
+        <result property="mainOrderNo" column="lc_customs_clearance_main_order_no" />
+    </resultMap>
+    <sql id="customsClearanceColumns">
+         ${alias}.id, ${alias}.status, ${alias}.order_no, ${alias}.customer_no, ${alias}.flight_number, ${alias}.customer_code, ${alias}.customer_name, ${alias}.financial_org_code, ${alias}.depart_code, ${alias}.added_service_no, ${alias}.bus_type, ${alias}.order_source, ${alias}.billlanding_no, ${alias}.remark, ${alias}.service_completion_time, ${alias}.user_def2, ${alias}.tenant_id, ${alias}.modify_time, ${alias}.modify_user_name, ${alias}.modify_user_id, ${alias}.create_time, ${alias}.create_user_name, ${alias}.create_user_id, ${alias}.deleted, ${alias}.bg, ${alias}.isv_id, ${alias}.create_real_name, ${alias}.modify_real_name, ${alias}.type, ${alias}.order_source_financial, ${alias}.init_creat_depart, ${alias}.main_order_no
+    </sql>
+    <sql id="customsClearanceAliasColumns">
+         ${alias}.id lc_customs_clearance_id, ${alias}.status lc_customs_clearance_status, ${alias}.order_no lc_customs_clearance_order_no, ${alias}.customer_no lc_customs_clearance_customer_no, ${alias}.flight_number lc_customs_clearance_flight_number, ${alias}.customer_code lc_customs_clearance_customer_code, ${alias}.customer_name lc_customs_clearance_customer_name, ${alias}.financial_org_code lc_customs_clearance_financial_org_code, ${alias}.depart_code lc_customs_clearance_depart_code, ${alias}.added_service_no lc_customs_clearance_added_service_no, ${alias}.bus_type lc_customs_clearance_bus_type, ${alias}.order_source lc_customs_clearance_order_source, ${alias}.billlanding_no lc_customs_clearance_billlanding_no, ${alias}.remark lc_customs_clearance_remark, ${alias}.service_completion_time lc_customs_clearance_service_completion_time, ${alias}.user_def2 lc_customs_clearance_user_def2, ${alias}.tenant_id lc_customs_clearance_tenant_id, ${alias}.modify_time lc_customs_clearance_modify_time, ${alias}.modify_user_name lc_customs_clearance_modify_user_name, ${alias}.modify_user_id lc_customs_clearance_modify_user_id, ${alias}.create_time lc_customs_clearance_create_time, ${alias}.create_user_name lc_customs_clearance_create_user_name, ${alias}.create_user_id lc_customs_clearance_create_user_id, ${alias}.deleted lc_customs_clearance_deleted, ${alias}.bg lc_customs_clearance_bg, ${alias}.isv_id lc_customs_clearance_isv_id, ${alias}.create_real_name lc_customs_clearance_create_real_name, ${alias}.modify_real_name lc_customs_clearance_modify_real_name, ${alias}.type lc_customs_clearance_type, ${alias}.order_source_financial lc_customs_clearance_order_source_financial, ${alias}.init_creat_depart lc_customs_clearance_init_creat_depart, ${alias}.main_order_no lc_customs_clearance_main_order_no
+    </sql>
+</mapper>

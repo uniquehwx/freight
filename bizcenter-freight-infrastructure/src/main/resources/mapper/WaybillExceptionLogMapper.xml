@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bizcenter.freight.infrastructure.persistence.dao.WaybillExceptionLogMapper">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.WaybillExceptionLogPo" id="waybillExceptionLogMap">
+        <id property="id" column="id"/>
+        <result property="statusKey" column="status_key" />
+        <result property="typeKey" column="type_key" />
+        <result property="waybillStateId" column="waybill_state_id" />
+        <result property="url" column="url" />
+        <result property="waybillId" column="waybill_id" />
+        <result property="remark" column="remark" />
+        <result property="tenantId" column="tenant_id" />
+        <result property="appId" column="app_id" />
+        <result property="modifyTime" column="modify_time" />
+        <result property="modifyUserName" column="modify_user_name" />
+        <result property="modifyUserId" column="modify_user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="createUserName" column="create_user_name" />
+        <result property="createUserId" column="create_user_id" />
+        <result property="deleted" column="deleted" />
+        <result property="isvId" column="isv_id" />
+        <result property="bg" column="bg" />
+        <result property="modifyRealName" column="modify_real_name" />
+        <result property="createRealName" column="create_real_name" />
+    </resultMap>
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.WaybillExceptionLogPo" id="waybillExceptionLogAliasMap">
+        <id property="id" column="id"/>
+        <result property="statusKey" column="lc_waybill_exception_log_status_key" />
+        <result property="typeKey" column="lc_waybill_exception_log_type_key" />
+        <result property="waybillStateId" column="lc_waybill_exception_log_waybill_state_id" />
+        <result property="url" column="lc_waybill_exception_log_url" />
+        <result property="waybillId" column="lc_waybill_exception_log_waybill_id" />
+        <result property="remark" column="lc_waybill_exception_log_remark" />
+        <result property="tenantId" column="lc_waybill_exception_log_tenant_id" />
+        <result property="appId" column="lc_waybill_exception_log_app_id" />
+        <result property="modifyTime" column="lc_waybill_exception_log_modify_time" />
+        <result property="modifyUserName" column="lc_waybill_exception_log_modify_user_name" />
+        <result property="modifyUserId" column="lc_waybill_exception_log_modify_user_id" />
+        <result property="createTime" column="lc_waybill_exception_log_create_time" />
+        <result property="createUserName" column="lc_waybill_exception_log_create_user_name" />
+        <result property="createUserId" column="lc_waybill_exception_log_create_user_id" />
+        <result property="deleted" column="lc_waybill_exception_log_deleted" />
+        <result property="isvId" column="lc_waybill_exception_log_isv_id" />
+        <result property="bg" column="lc_waybill_exception_log_bg" />
+        <result property="modifyRealName" column="lc_waybill_exception_log_modify_real_name" />
+        <result property="createRealName" column="lc_waybill_exception_log_create_real_name" />
+    </resultMap>
+    <sql id="waybillExceptionLogColumns">
+         ${alias}.id, ${alias}.status_key, ${alias}.type_key, ${alias}.waybill_state_id, ${alias}.url, ${alias}.waybill_id, ${alias}.remark, ${alias}.tenant_id, ${alias}.modify_time, ${alias}.modify_user_name, ${alias}.modify_user_id, ${alias}.create_time, ${alias}.create_user_name, ${alias}.create_user_id, ${alias}.deleted, ${alias}.isv_id, ${alias}.bg, ${alias}.modify_real_name, ${alias}.create_real_name
+    </sql>
+    <sql id="waybillExceptionLogAliasColumns">
+         ${alias}.id lc_waybill_exception_log_id, ${alias}.status_key lc_waybill_exception_log_status_key, ${alias}.type_key lc_waybill_exception_log_type_key, ${alias}.waybill_state_id lc_waybill_exception_log_waybill_state_id, ${alias}.url lc_waybill_exception_log_url, ${alias}.waybill_id lc_waybill_exception_log_waybill_id, ${alias}.remark lc_waybill_exception_log_remark, ${alias}.tenant_id lc_waybill_exception_log_tenant_id, ${alias}.modify_time lc_waybill_exception_log_modify_time, ${alias}.modify_user_name lc_waybill_exception_log_modify_user_name, ${alias}.modify_user_id lc_waybill_exception_log_modify_user_id, ${alias}.create_time lc_waybill_exception_log_create_time, ${alias}.create_user_name lc_waybill_exception_log_create_user_name, ${alias}.create_user_id lc_waybill_exception_log_create_user_id, ${alias}.deleted lc_waybill_exception_log_deleted, ${alias}.isv_id lc_waybill_exception_log_isv_id, ${alias}.bg lc_waybill_exception_log_bg, ${alias}.modify_real_name lc_waybill_exception_log_modify_real_name, ${alias}.create_real_name lc_waybill_exception_log_create_real_name
+    </sql>
+</mapper>

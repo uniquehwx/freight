@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bizcenter.freight.infrastructure.persistence.dao.WhOrderMapper">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.WhOrderPo" id="whOrderMap">
+        <id property="id" column="id"/>
+        <result property="tenantId" column="tenant_id" />
+        <result property="appId" column="app_id" />
+        <result property="modifyTime" column="modify_time" />
+        <result property="modifyUserName" column="modify_user_name" />
+        <result property="modifyUserId" column="modify_user_id" />
+        <result property="createTime" column="create_time" />
+        <result property="createUserName" column="create_user_name" />
+        <result property="createUserId" column="create_user_id" />
+        <result property="deleted" column="deleted" />
+        <result property="bg" column="bg" />
+        <result property="isvId" column="isv_id" />
+        <result property="createRealName" column="create_real_name" />
+        <result property="modifyRealName" column="modify_real_name" />
+        <result property="inStorageNo" column="in_storage_no" />
+        <result property="customerNo" column="customer_no" />
+        <result property="customerCode" column="customer_code" />
+        <result property="customerContacts" column="customer_contacts" />
+        <result property="customerPhone" column="customer_phone" />
+        <result property="busType" column="bus_type" />
+        <result property="weight" column="weight" />
+        <result property="volume" column="volume" />
+        <result property="quantity" column="quantity" />
+        <result property="zhName" column="zh_name" />
+        <result property="actualWeight" column="actual_weight" />
+        <result property="actualQuantity" column="actual_quantity" />
+        <result property="actualVolume" column="actual_volume" />
+        <result property="actualVolumeWeight" column="actual_volume_weight" />
+        <result property="size" column="size" typeHandler="com.bitsun.core.common.mybatis.handler.JsonTypeHandler"/>
+        <result property="accompanyData" column="accompany_data" />
+        <result property="orderNo" column="order_no" />
+        <result property="status" column="status" />
+        <result property="imageUploadTime" column="image_upload_time" />
+        <result property="inStorageTime" column="in_storage_time" />
+        <result property="customsCheckTime" column="customs_check_time" />
+        <result property="outStorageTime" column="out_storage_time" />
+        <result property="orderSource" column="order_source" />
+        <result property="saleUser" column="sale_user" />
+        <result property="serviceUser" column="service_user" />
+        <result property="goodsDamageInfo" column="goods_damage_info" />
+        <result property="warehouseName" column="warehouse_name" />
+        <result property="goodsStation" column="goods_station" />
+        <result property="syncStatus" column="sync_status" />
+        <result property="departTime" column="depart_time" />
+        <result property="remark" column="remark" />
+        <result property="userDef1" column="user_def1" />
+        <result property="userDef2" column="user_def2" />
+        <result property="customerName" column="customer_name" />
+        <result property="type" column="type" />
+        <result property="inOrderNo" column="in_order_no" />
+        <result property="warehouseCode" column="warehouse_code" />
+        <result property="financialOrgCode" column="financial_org_code" />
+        <result property="billingWeight" column="billing_weight" />
+        <result property="mainOrderNo" column="main_order_no" />
+        <result property="inWarehouseNo" column="in_warehouse_no" />
+        <result property="orderSourceFinancial" column="order_source_financial" />
+        <result property="initCreatDepart" column="init_creat_depart" />
+        <result property="departCode" column="depart_code" />
+        <result property="estimatedTimeWarehouse" column="estimated_time_warehouse" />
+        <result property="externalServiceType" column="external_service_type" />
+        <result property="mergeOrderNo" column="merge_order_no" />
+    </resultMap>
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.WhOrderPo" id="whOrderAliasMap">
+        <id property="id" column="id"/>
+        <result property="tenantId" column="lc_wh_order_tenant_id" />
+        <result property="appId" column="lc_wh_order_app_id" />
+        <result property="modifyTime" column="lc_wh_order_modify_time" />
+        <result property="modifyUserName" column="lc_wh_order_modify_user_name" />
+        <result property="modifyUserId" column="lc_wh_order_modify_user_id" />
+        <result property="createTime" column="lc_wh_order_create_time" />
+        <result property="createUserName" column="lc_wh_order_create_user_name" />
+        <result property="createUserId" column="lc_wh_order_create_user_id" />
+        <result property="deleted" column="lc_wh_order_deleted" />
+        <result property="bg" column="lc_wh_order_bg" />
+        <result property="isvId" column="lc_wh_order_isv_id" />
+        <result property="createRealName" column="lc_wh_order_create_real_name" />
+        <result property="modifyRealName" column="lc_wh_order_modify_real_name" />
+        <result property="inStorageNo" column="lc_wh_order_in_storage_no" />
+        <result property="customerNo" column="lc_wh_order_customer_no" />
+        <result property="customerCode" column="lc_wh_order_customer_code" />
+        <result property="customerContacts" column="lc_wh_order_customer_contacts" />
+        <result property="customerPhone" column="lc_wh_order_customer_phone" />
+        <result property="busType" column="lc_wh_order_bus_type" />
+        <result property="weight" column="lc_wh_order_weight" />
+        <result property="volume" column="lc_wh_order_volume" />
+        <result property="quantity" column="lc_wh_order_quantity" />
+        <result property="zhName" column="lc_wh_order_zh_name" />
+        <result property="actualWeight" column="lc_wh_order_actual_weight" />
+        <result property="actualQuantity" column="lc_wh_order_actual_quantity" />
+        <result property="actualVolume" column="lc_wh_order_actual_volume" />
+        <result property="actualVolumeWeight" column="lc_wh_order_actual_volume_weight" />
+        <result property="size" column="lc_wh_order_size" typeHandler="com.bitsun.core.common.mybatis.handler.JsonTypeHandler"/>
+        <result property="accompanyData" column="lc_wh_order_accompany_data" />
+        <result property="orderNo" column="lc_wh_order_order_no" />
+        <result property="status" column="lc_wh_order_status" />
+        <result property="imageUploadTime" column="lc_wh_order_image_upload_time" />
+        <result property="inStorageTime" column="lc_wh_order_in_storage_time" />
+        <result property="customsCheckTime" column="lc_wh_order_customs_check_time" />
+        <result property="outStorageTime" column="lc_wh_order_out_storage_time" />
+        <result property="orderSource" column="lc_wh_order_order_source" />
+        <result property="saleUser" column="lc_wh_order_sale_user" />
+        <result property="serviceUser" column="lc_wh_order_service_user" />
+        <result property="goodsDamageInfo" column="lc_wh_order_goods_damage_info" />
+        <result property="warehouseName" column="lc_wh_order_warehouse_name" />
+        <result property="goodsStation" column="lc_wh_order_goods_station" />
+        <result property="syncStatus" column="lc_wh_order_sync_status" />
+        <result property="departTime" column="lc_wh_order_depart_time" />
+        <result property="remark" column="lc_wh_order_remark" />
+        <result property="userDef1" column="lc_wh_order_user_def1" />
+        <result property="userDef2" column="lc_wh_order_user_def2" />
+        <result property="customerName" column="lc_wh_order_customer_name" />
+        <result property="type" column="lc_wh_order_type" />
+        <result property="inOrderNo" column="lc_wh_order_in_order_no" />
+        <result property="warehouseCode" column="lc_wh_order_warehouse_code" />
+        <result property="financialOrgCode" column="lc_wh_order_financial_org_code" />
+        <result property="billingWeight" column="lc_wh_order_billing_weight" />
+        <result property="mainOrderNo" column="lc_wh_order_main_order_no" />
+        <result property="inWarehouseNo" column="lc_wh_order_in_warehouse_no" />
+        <result property="orderSourceFinancial" column="lc_wh_order_order_source_financial" />
+        <result property="initCreatDepart" column="lc_wh_order_init_creat_depart" />
+        <result property="departCode" column="lc_wh_order_depart_code" />
+        <result property="estimatedTimeWarehouse" column="lc_wh_order_estimated_time_warehouse" />
+        <result property="externalServiceType" column="lc_wh_order_external_service_type" />
+        <result property="mergeOrderNo" column="lc_wh_order_merge_order_no" />
+    </resultMap>
+    <sql id="whOrderColumns">
+         ${alias}.id, ${alias}.tenant_id, ${alias}.modify_time, ${alias}.modify_user_name, ${alias}.modify_user_id, ${alias}.create_time, ${alias}.create_user_name, ${alias}.create_user_id, ${alias}.deleted, ${alias}.bg, ${alias}.isv_id, ${alias}.create_real_name, ${alias}.modify_real_name, ${alias}.in_storage_no, ${alias}.customer_no, ${alias}.customer_code, ${alias}.customer_contacts, ${alias}.customer_phone, ${alias}.bus_type, ${alias}.weight, ${alias}.volume, ${alias}.quantity, ${alias}.zh_name, ${alias}.actual_weight, ${alias}.actual_quantity, ${alias}.actual_volume, ${alias}.actual_volume_weight, ${alias}.size, ${alias}.accompany_data, ${alias}.order_no, ${alias}.status, ${alias}.image_upload_time, ${alias}.in_storage_time, ${alias}.customs_check_time, ${alias}.out_storage_time, ${alias}.order_source, ${alias}.sale_user, ${alias}.service_user, ${alias}.goods_damage_info, ${alias}.warehouse_name, ${alias}.goods_station, ${alias}.sync_status, ${alias}.depart_time, ${alias}.remark, ${alias}.user_def1, ${alias}.user_def2, ${alias}.customer_name, ${alias}.type, ${alias}.in_order_no, ${alias}.warehouse_code, ${alias}.financial_org_code, ${alias}.billing_weight, ${alias}.main_order_no, ${alias}.in_warehouse_no, ${alias}.order_source_financial, ${alias}.init_creat_depart, ${alias}.depart_code, ${alias}.estimated_time_warehouse, ${alias}.external_service_type, ${alias}.merge_order_no
+    </sql>
+    <sql id="whOrderAliasColumns">
+         ${alias}.id lc_wh_order_id, ${alias}.tenant_id lc_wh_order_tenant_id, ${alias}.modify_time lc_wh_order_modify_time, ${alias}.modify_user_name lc_wh_order_modify_user_name, ${alias}.modify_user_id lc_wh_order_modify_user_id, ${alias}.create_time lc_wh_order_create_time, ${alias}.create_user_name lc_wh_order_create_user_name, ${alias}.create_user_id lc_wh_order_create_user_id, ${alias}.deleted lc_wh_order_deleted, ${alias}.bg lc_wh_order_bg, ${alias}.isv_id lc_wh_order_isv_id, ${alias}.create_real_name lc_wh_order_create_real_name, ${alias}.modify_real_name lc_wh_order_modify_real_name, ${alias}.in_storage_no lc_wh_order_in_storage_no, ${alias}.customer_no lc_wh_order_customer_no, ${alias}.customer_code lc_wh_order_customer_code, ${alias}.customer_contacts lc_wh_order_customer_contacts, ${alias}.customer_phone lc_wh_order_customer_phone, ${alias}.bus_type lc_wh_order_bus_type, ${alias}.weight lc_wh_order_weight, ${alias}.volume lc_wh_order_volume, ${alias}.quantity lc_wh_order_quantity, ${alias}.zh_name lc_wh_order_zh_name, ${alias}.actual_weight lc_wh_order_actual_weight, ${alias}.actual_quantity lc_wh_order_actual_quantity, ${alias}.actual_volume lc_wh_order_actual_volume, ${alias}.actual_volume_weight lc_wh_order_actual_volume_weight, ${alias}.size lc_wh_order_size, ${alias}.accompany_data lc_wh_order_accompany_data, ${alias}.order_no lc_wh_order_order_no, ${alias}.status lc_wh_order_status, ${alias}.image_upload_time lc_wh_order_image_upload_time, ${alias}.in_storage_time lc_wh_order_in_storage_time, ${alias}.customs_check_time lc_wh_order_customs_check_time, ${alias}.out_storage_time lc_wh_order_out_storage_time, ${alias}.order_source lc_wh_order_order_source, ${alias}.sale_user lc_wh_order_sale_user, ${alias}.service_user lc_wh_order_service_user, ${alias}.goods_damage_info lc_wh_order_goods_damage_info, ${alias}.warehouse_name lc_wh_order_warehouse_name, ${alias}.goods_station lc_wh_order_goods_station, ${alias}.sync_status lc_wh_order_sync_status, ${alias}.depart_time lc_wh_order_depart_time, ${alias}.remark lc_wh_order_remark, ${alias}.user_def1 lc_wh_order_user_def1, ${alias}.user_def2 lc_wh_order_user_def2, ${alias}.customer_name lc_wh_order_customer_name, ${alias}.type lc_wh_order_type, ${alias}.in_order_no lc_wh_order_in_order_no, ${alias}.warehouse_code lc_wh_order_warehouse_code, ${alias}.financial_org_code lc_wh_order_financial_org_code, ${alias}.billing_weight lc_wh_order_billing_weight, ${alias}.main_order_no lc_wh_order_main_order_no, ${alias}.in_warehouse_no lc_wh_order_in_warehouse_no, ${alias}.order_source_financial lc_wh_order_order_source_financial, ${alias}.init_creat_depart lc_wh_order_init_creat_depart, ${alias}.depart_code lc_wh_order_depart_code, ${alias}.estimated_time_warehouse lc_wh_order_estimated_time_warehouse, ${alias}.external_service_type lc_wh_order_external_service_type, ${alias}.merge_order_no lc_wh_order_merge_order_no
+    </sql>
+</mapper>
