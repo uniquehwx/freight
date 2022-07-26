@@ -1,15 +1,10 @@
 package com.bizcenter.freight.convertor;
 
-import com.bizcenter.freight.domain.model.AirFlightEntity;
-import com.google.common.collect.Lists;
-import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.dto.req.AirFlightReqDto;
-import com.bizcenter.freight.dto.res.AirFlightResDto;
-import com.bizcenter.freight.infrastructure.persistence.po.AirFlightPo;
-import java.util.List;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import com.bitsun.core.common.convertor.IConvertor;
+import com.bitsun.core.common.persistence.Pager;
+import com.bizcenter.freight.domain.model.AirFlightEntity;
+import com.bizcenter.freight.dto.res.AirFlightResDto;
+import org.mapstruct.Mapper;
 /**
  * 航班表
  * @author: hwx
@@ -17,9 +12,9 @@ import com.bitsun.core.common.convertor.IConvertor;
  */
 
 @Mapper(componentModel="spring")
-public abstract class AirFlightResDtoConvertor implements IConvertor<AirFlightResDto,AirFlightEntity,AirFlightPo> {
+public abstract class AirFlightResDtoConvertor implements IConvertor<AirFlightResDto,AirFlightEntity,String> {
 
-    public  Pager<AirFlightResDto> convertPoPager2ResDtoPager(Pager<AirFlightPo> poPager) {
+    public  Pager<AirFlightResDto> convertPoPager2ResDtoPager(Pager<String> poPager) {
         if (poPager == null) {
             return null;
         }

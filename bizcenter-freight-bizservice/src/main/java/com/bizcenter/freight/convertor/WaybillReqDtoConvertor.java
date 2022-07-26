@@ -1,15 +1,9 @@
 package com.bizcenter.freight.convertor;
 
-import com.bizcenter.freight.domain.model.WaybillEntity;
-import com.google.common.collect.Lists;
-import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.dto.req.WaybillReqDto;
-import com.bizcenter.freight.dto.res.WaybillResDto;
-import com.bizcenter.freight.infrastructure.persistence.po.WaybillPo;
-import java.util.List;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import com.bitsun.core.common.convertor.IConvertor;
+import com.bizcenter.freight.domain.model.WaybillEntity;
+import com.bizcenter.freight.dto.req.WaybillReqDto;
+import org.mapstruct.Mapper;
 /**
  * 派车表
  * @author: hwx
@@ -17,7 +11,7 @@ import com.bitsun.core.common.convertor.IConvertor;
  */
 
 @Mapper(componentModel="spring")
-public abstract class WaybillReqDtoConvertor implements IConvertor<WaybillReqDto,WaybillEntity,WaybillPo> {
+public abstract class WaybillReqDtoConvertor implements IConvertor<WaybillReqDto,WaybillEntity,String> {
 
 }
 

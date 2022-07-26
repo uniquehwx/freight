@@ -1,15 +1,10 @@
 package com.bizcenter.freight.convertor;
 
-import com.bizcenter.freight.domain.model.TransportOrderEntity;
-import com.google.common.collect.Lists;
-import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.dto.req.TransportOrderReqDto;
-import com.bizcenter.freight.dto.res.TransportOrderResDto;
-import com.bizcenter.freight.infrastructure.persistence.po.TransportOrderPo;
-import java.util.List;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import com.bitsun.core.common.convertor.IConvertor;
+import com.bitsun.core.common.persistence.Pager;
+import com.bizcenter.freight.domain.model.TransportOrderEntity;
+import com.bizcenter.freight.dto.res.TransportOrderResDto;
+import org.mapstruct.Mapper;
 /**
  * 陆运订单表
  * @author: hwx
@@ -17,9 +12,9 @@ import com.bitsun.core.common.convertor.IConvertor;
  */
 
 @Mapper(componentModel="spring")
-public abstract class TransportOrderResDtoConvertor implements IConvertor<TransportOrderResDto,TransportOrderEntity,TransportOrderPo> {
+public abstract class TransportOrderResDtoConvertor implements IConvertor<TransportOrderResDto,TransportOrderEntity,String> {
 
-    public  Pager<TransportOrderResDto> convertPoPager2ResDtoPager(Pager<TransportOrderPo> poPager) {
+    public  Pager<TransportOrderResDto> convertPoPager2ResDtoPager(Pager<String> poPager) {
         if (poPager == null) {
             return null;
         }

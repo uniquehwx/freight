@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /*
 apollo不启用
 @EnableApolloConfig({"application","mybatisplus", "jmtop.zipkin"})*/
-@SpringBootApplication(scanBasePackages = {"com.bizcenter.freight","com.bitsun.core"})
+@SpringBootApplication(scanBasePackages = {"com.bizcenter.freight","com.bitsun.core","com.bizcenter.freight.infrastructure"})
 //@EnableHystrix
 //@EnableFeignClients
 @EnableDiscoveryClient

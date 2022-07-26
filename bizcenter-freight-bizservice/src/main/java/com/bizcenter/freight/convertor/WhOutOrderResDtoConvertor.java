@@ -1,15 +1,10 @@
 package com.bizcenter.freight.convertor;
 
-import com.bizcenter.freight.domain.model.WhOutOrderEntity;
-import com.google.common.collect.Lists;
-import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.dto.req.WhOutOrderReqDto;
-import com.bizcenter.freight.dto.res.WhOutOrderResDto;
-import com.bizcenter.freight.infrastructure.persistence.po.WhOutOrderPo;
-import java.util.List;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import com.bitsun.core.common.convertor.IConvertor;
+import com.bitsun.core.common.persistence.Pager;
+import com.bizcenter.freight.domain.model.WhOutOrderEntity;
+import com.bizcenter.freight.dto.res.WhOutOrderResDto;
+import org.mapstruct.Mapper;
 /**
  * 出库表
  * @author: hwx
@@ -17,9 +12,9 @@ import com.bitsun.core.common.convertor.IConvertor;
  */
 
 @Mapper(componentModel="spring")
-public abstract class WhOutOrderResDtoConvertor implements IConvertor<WhOutOrderResDto,WhOutOrderEntity,WhOutOrderPo> {
+public abstract class WhOutOrderResDtoConvertor implements IConvertor<WhOutOrderResDto,WhOutOrderEntity,String> {
 
-    public  Pager<WhOutOrderResDto> convertPoPager2ResDtoPager(Pager<WhOutOrderPo> poPager) {
+    public  Pager<WhOutOrderResDto> convertPoPager2ResDtoPager(Pager<String> poPager) {
         if (poPager == null) {
             return null;
         }

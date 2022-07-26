@@ -1,15 +1,9 @@
 package com.bizcenter.freight.convertor;
 
-import com.bizcenter.freight.domain.model.AirHarbourEntity;
-import com.google.common.collect.Lists;
-import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.dto.req.AirHarbourReqDto;
-import com.bizcenter.freight.dto.res.AirHarbourResDto;
-import com.bizcenter.freight.infrastructure.persistence.po.AirHarbourPo;
-import java.util.List;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import com.bitsun.core.common.convertor.IConvertor;
+import com.bizcenter.freight.domain.model.AirHarbourEntity;
+import com.bizcenter.freight.dto.req.AirHarbourReqDto;
+import org.mapstruct.Mapper;
 /**
  * 港口表
  * @author: hwx
@@ -17,7 +11,7 @@ import com.bitsun.core.common.convertor.IConvertor;
  */
 
 @Mapper(componentModel="spring")
-public abstract class AirHarbourReqDtoConvertor implements IConvertor<AirHarbourReqDto,AirHarbourEntity,AirHarbourPo> {
+public abstract class AirHarbourReqDtoConvertor implements IConvertor<AirHarbourReqDto,AirHarbourEntity,String> {
 
 }
 

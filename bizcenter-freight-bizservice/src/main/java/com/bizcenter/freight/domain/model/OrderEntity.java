@@ -1,15 +1,13 @@
 package com.bizcenter.freight.domain.model;
 
-import com.bitsun.core.common.persistence.IPService;
 import com.bitsun.core.framwork.domain.model.Entity;
-import com.bizcenter.freight.infrastructure.persistence.po.OrderPo;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import com.bizcenter.freight.domain.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 
 /**
@@ -109,10 +107,11 @@ public class OrderEntity  implements Entity<OrderEntity>{
          */
         private String salesClerkCode;
 
-         public   void saveSelf(IPService<OrderPo> orderPoService){
+         public   void saveSelf(OrderRepository orderRepository){
              // 通过仓储层进行处理
 //             orderPoService.save();
-        }
+               Entity insert = orderRepository.insert(this);
+         }
 
 }
 

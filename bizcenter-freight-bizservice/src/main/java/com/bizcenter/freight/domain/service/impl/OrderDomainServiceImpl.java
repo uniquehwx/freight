@@ -2,11 +2,8 @@ package com.bizcenter.freight.domain.service.impl;
 
 import com.bizcenter.freight.convertor.OrderReqDtoConvertor;
 import com.bizcenter.freight.convertor.OrderResDtoConvertor;
-import com.bitsun.core.common.persistence.BasePService;
-import com.bitsun.core.common.persistence.IPService;
 import com.bizcenter.freight.domain.model.OrderEntity;
-import com.bizcenter.freight.infrastructure.persistence.dao.OrderMapper;
-import com.bizcenter.freight.infrastructure.persistence.po.OrderPo;
+import com.bizcenter.freight.domain.repository.OrderRepository;
 import com.bizcenter.freight.domain.service.order.OrderDomainService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +25,18 @@ public class OrderDomainServiceImpl implements OrderDomainService{
     @Autowired
     private OrderResDtoConvertor orderResDtoConvertor;
 
-    private IPService<OrderPo> orderPoService;
 
-    @SuppressWarnings("SpringJavaAutowiringInspection")
-    public OrderDomainServiceImpl(OrderMapper orderMapper) {
-        this.orderPoService = new BasePService(orderMapper);
-    }
+    @Autowired
+    private OrderRepository orderRepository;
+//
+//    @SuppressWarnings("SpringJavaAutowiringInspection")
+//    public OrderDomainServiceImpl(OrderMapper orderMapper) {
+//        this.orderPoService = new BasePService(orderMapper);
+//    }
 
     @Override
     public void addOrder(OrderEntity orderEntity) {
-        orderEntity.saveSelf(orderPoService);
+        orderEntity.saveSelf(orderRepository);
 
     }
 

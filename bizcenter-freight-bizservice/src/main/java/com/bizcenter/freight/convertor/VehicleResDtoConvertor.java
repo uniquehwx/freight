@@ -1,15 +1,10 @@
 package com.bizcenter.freight.convertor;
 
-import com.bizcenter.freight.domain.model.VehicleEntity;
-import com.google.common.collect.Lists;
-import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.dto.req.VehicleReqDto;
-import com.bizcenter.freight.dto.res.VehicleResDto;
-import com.bizcenter.freight.infrastructure.persistence.po.VehiclePo;
-import java.util.List;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import com.bitsun.core.common.convertor.IConvertor;
+import com.bitsun.core.common.persistence.Pager;
+import com.bizcenter.freight.domain.model.VehicleEntity;
+import com.bizcenter.freight.dto.res.VehicleResDto;
+import org.mapstruct.Mapper;
 /**
  * 车辆表
  * @author: hwx
@@ -17,9 +12,9 @@ import com.bitsun.core.common.convertor.IConvertor;
  */
 
 @Mapper(componentModel="spring")
-public abstract class VehicleResDtoConvertor implements IConvertor<VehicleResDto,VehicleEntity,VehiclePo> {
+public abstract class VehicleResDtoConvertor implements IConvertor<VehicleResDto,VehicleEntity,String> {
 
-    public  Pager<VehicleResDto> convertPoPager2ResDtoPager(Pager<VehiclePo> poPager) {
+    public  Pager<VehicleResDto> convertPoPager2ResDtoPager(Pager<String> poPager) {
         if (poPager == null) {
             return null;
         }
