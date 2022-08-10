@@ -86,70 +86,7 @@ public interface OrderApi {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "操作是否成功,000000:成功，否则失败")})
     ResultDTO<OrderResDto> getOneOrder(Long id);
 
-    /**
-     * 查询一个资源对象
-     *
-     * @param params 能确定唯一对象的条件
-     * @return 返回单独的资源对象
-     */
-    @ApiOperation(value = "查询一个资源对象(若不唯一则随机返回符合条件的一个)", tags = {"order"}, nickname = "getOneOrderByMap")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "操作是否成功,000000:成功，否则失败")})
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "orderNo", value = "订单号", paramType = "query"),
-        @ApiImplicitParam(name = "tradeType", value = "交易类型(1-航空订单，5-地面操作订单)", paramType = "query"),
-        @ApiImplicitParam(name = "customerCode", value = "客户编码", paramType = "query"),
-        @ApiImplicitParam(name = "clientName", value = "委托方联系人", paramType = "query"),
-        @ApiImplicitParam(name = "clinetPhone", value = "委托方联系人电话", paramType = "query"),
-        @ApiImplicitParam(name = "outOrderNo", value = "父单单号", paramType = "query"),
-        @ApiImplicitParam(name = "orderType", value = "单据类型(1-主订单，2-子订单)", paramType = "query"),
-        @ApiImplicitParam(name = "tradeStatus", value = "交易状态", paramType = "query"),
-        @ApiImplicitParam(name = "supllierCode", value = "供应商编码", paramType = "query"),
-        @ApiImplicitParam(name = "startPointCode", value = "始发地编码", paramType = "query"),
-        @ApiImplicitParam(name = "endPointCode", value = "目的地编码", paramType = "query"),
-        @ApiImplicitParam(name = "remark", value = "备注", paramType = "query"),
-        @ApiImplicitParam(name = "createUserId", value = "创建者id", paramType = "query"),
-        @ApiImplicitParam(name = "createUserName", value = "创建者姓名", paramType = "query"),
-        @ApiImplicitParam(name = "modifyUserId", value = "修改人id", paramType = "query"),
-        @ApiImplicitParam(name = "modifyUserName", value = "修改人名称", paramType = "query"),
-        @ApiImplicitParam(name = "extData", value = "扩展信息", paramType = "query"),
-        @ApiImplicitParam(name = "businessType", value = "业务类型", paramType = "query"),
-        @ApiImplicitParam(name = "completionTime", value = "订单完成时间", paramType = "query"),
-        @ApiImplicitParam(name = "salesClerkCode", value = "业务员", paramType = "query"),
 
-    })
-    ResultDTO<OrderResDto> getOneOrder(Map<String, Object> params);
-
-    /**
-     * 更新一个资源对象(部分更新)
-     *
-     * @return 返回完整的资源对象
-     */
-    @ApiOperation(value = "更新一个资源对象(更新参数的全部属性)", tags = {"order"}, nickname = "updateOrderByMap")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "orderNo", value = "订单号", paramType = "query"),
-        @ApiImplicitParam(name = "tradeType", value = "交易类型(1-航空订单，5-地面操作订单)", paramType = "query"),
-        @ApiImplicitParam(name = "customerCode", value = "客户编码", paramType = "query"),
-        @ApiImplicitParam(name = "clientName", value = "委托方联系人", paramType = "query"),
-        @ApiImplicitParam(name = "clinetPhone", value = "委托方联系人电话", paramType = "query"),
-        @ApiImplicitParam(name = "outOrderNo", value = "父单单号", paramType = "query"),
-        @ApiImplicitParam(name = "orderType", value = "单据类型(1-主订单，2-子订单)", paramType = "query"),
-        @ApiImplicitParam(name = "tradeStatus", value = "交易状态", paramType = "query"),
-        @ApiImplicitParam(name = "supllierCode", value = "供应商编码", paramType = "query"),
-        @ApiImplicitParam(name = "startPointCode", value = "始发地编码", paramType = "query"),
-        @ApiImplicitParam(name = "endPointCode", value = "目的地编码", paramType = "query"),
-        @ApiImplicitParam(name = "remark", value = "备注", paramType = "query"),
-        @ApiImplicitParam(name = "createUserId", value = "创建者id", paramType = "query"),
-        @ApiImplicitParam(name = "createUserName", value = "创建者姓名", paramType = "query"),
-        @ApiImplicitParam(name = "modifyUserId", value = "修改人id", paramType = "query"),
-        @ApiImplicitParam(name = "modifyUserName", value = "修改人名称", paramType = "query"),
-        @ApiImplicitParam(name = "extData", value = "扩展信息", paramType = "query"),
-        @ApiImplicitParam(name = "businessType", value = "业务类型", paramType = "query"),
-        @ApiImplicitParam(name = "completionTime", value = "订单完成时间", paramType = "query"),
-        @ApiImplicitParam(name = "salesClerkCode", value = "业务员", paramType = "query"),
-        @ApiImplicitParam(name = "remark", value = "备注", paramType = "query")
-    })
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "操作是否成功,000000:成功，否则失败")})
-    ResultDTO<OrderResDto> updateOrder(Long id, Map<String, Object> params);
     /**
      * 更新一个资源对象(部分更新)
      *
@@ -160,12 +97,87 @@ public interface OrderApi {
     ResultDTO<OrderResDto> patchUpdateOrder(Long id, OrderReqDto reqDto);
 
     /**
-     * 更新一个资源对象（整个对象替换，属性的null值也会更新进去）
+     * 取消订单处理
      *
-     * @return 返回完整的资源对象
+     * @return 返回boolean
      */
-    @ApiOperation(value = "更新一个资源对象（更新对象里全部属性，即整个对象替换）", tags = {"order"}, nickname = "putUpdateOrder")
+    @ApiOperation(value = "只进行取消状态设置处理", tags = {"order"}, nickname = "patchUpdateOrder")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "操作是否成功,000000:成功，否则失败")})
-    ResultDTO<OrderResDto> putUpdateOrder(Long id, OrderReqDto reqDto);
+    ResultDTO<Boolean> cancelOrder(Long id);
+
+
+//    /**
+//     * 查询一个资源对象
+//     *
+//     * @param params 能确定唯一对象的条件
+//     * @return 返回单独的资源对象
+//     */
+//    @ApiOperation(value = "查询一个资源对象(若不唯一则随机返回符合条件的一个)", tags = {"order"}, nickname = "getOneOrderByMap")
+//    @ApiResponses(value = {@ApiResponse(code = 200, message = "操作是否成功,000000:成功，否则失败")})
+//    @ApiImplicitParams({
+//        @ApiImplicitParam(name = "orderNo", value = "订单号", paramType = "query"),
+//        @ApiImplicitParam(name = "tradeType", value = "交易类型(1-航空订单，5-地面操作订单)", paramType = "query"),
+//        @ApiImplicitParam(name = "customerCode", value = "客户编码", paramType = "query"),
+//        @ApiImplicitParam(name = "clientName", value = "委托方联系人", paramType = "query"),
+//        @ApiImplicitParam(name = "clinetPhone", value = "委托方联系人电话", paramType = "query"),
+//        @ApiImplicitParam(name = "outOrderNo", value = "父单单号", paramType = "query"),
+//        @ApiImplicitParam(name = "orderType", value = "单据类型(1-主订单，2-子订单)", paramType = "query"),
+//        @ApiImplicitParam(name = "tradeStatus", value = "交易状态", paramType = "query"),
+//        @ApiImplicitParam(name = "supllierCode", value = "供应商编码", paramType = "query"),
+//        @ApiImplicitParam(name = "startPointCode", value = "始发地编码", paramType = "query"),
+//        @ApiImplicitParam(name = "endPointCode", value = "目的地编码", paramType = "query"),
+//        @ApiImplicitParam(name = "remark", value = "备注", paramType = "query"),
+//        @ApiImplicitParam(name = "createUserId", value = "创建者id", paramType = "query"),
+//        @ApiImplicitParam(name = "createUserName", value = "创建者姓名", paramType = "query"),
+//        @ApiImplicitParam(name = "modifyUserId", value = "修改人id", paramType = "query"),
+//        @ApiImplicitParam(name = "modifyUserName", value = "修改人名称", paramType = "query"),
+//        @ApiImplicitParam(name = "extData", value = "扩展信息", paramType = "query"),
+//        @ApiImplicitParam(name = "businessType", value = "业务类型", paramType = "query"),
+//        @ApiImplicitParam(name = "completionTime", value = "订单完成时间", paramType = "query"),
+//        @ApiImplicitParam(name = "salesClerkCode", value = "业务员", paramType = "query"),
+//
+//    })
+//    ResultDTO<OrderResDto> getOneOrder(Map<String, Object> params);
+
+//    /**
+//     * 更新一个资源对象(部分更新)
+//     *
+//     * @return 返回完整的资源对象
+//     */
+//    @ApiOperation(value = "更新一个资源对象(更新参数的全部属性)", tags = {"order"}, nickname = "updateOrderByMap")
+//    @ApiImplicitParams({
+//        @ApiImplicitParam(name = "orderNo", value = "订单号", paramType = "query"),
+//        @ApiImplicitParam(name = "tradeType", value = "交易类型(1-航空订单，5-地面操作订单)", paramType = "query"),
+//        @ApiImplicitParam(name = "customerCode", value = "客户编码", paramType = "query"),
+//        @ApiImplicitParam(name = "clientName", value = "委托方联系人", paramType = "query"),
+//        @ApiImplicitParam(name = "clinetPhone", value = "委托方联系人电话", paramType = "query"),
+//        @ApiImplicitParam(name = "outOrderNo", value = "父单单号", paramType = "query"),
+//        @ApiImplicitParam(name = "orderType", value = "单据类型(1-主订单，2-子订单)", paramType = "query"),
+//        @ApiImplicitParam(name = "tradeStatus", value = "交易状态", paramType = "query"),
+//        @ApiImplicitParam(name = "supllierCode", value = "供应商编码", paramType = "query"),
+//        @ApiImplicitParam(name = "startPointCode", value = "始发地编码", paramType = "query"),
+//        @ApiImplicitParam(name = "endPointCode", value = "目的地编码", paramType = "query"),
+//        @ApiImplicitParam(name = "remark", value = "备注", paramType = "query"),
+//        @ApiImplicitParam(name = "createUserId", value = "创建者id", paramType = "query"),
+//        @ApiImplicitParam(name = "createUserName", value = "创建者姓名", paramType = "query"),
+//        @ApiImplicitParam(name = "modifyUserId", value = "修改人id", paramType = "query"),
+//        @ApiImplicitParam(name = "modifyUserName", value = "修改人名称", paramType = "query"),
+//        @ApiImplicitParam(name = "extData", value = "扩展信息", paramType = "query"),
+//        @ApiImplicitParam(name = "businessType", value = "业务类型", paramType = "query"),
+//        @ApiImplicitParam(name = "completionTime", value = "订单完成时间", paramType = "query"),
+//        @ApiImplicitParam(name = "salesClerkCode", value = "业务员", paramType = "query"),
+//        @ApiImplicitParam(name = "remark", value = "备注", paramType = "query")
+//    })
+//    @ApiResponses(value = {@ApiResponse(code = 200, message = "操作是否成功,000000:成功，否则失败")})
+//    ResultDTO<OrderResDto> updateOrder(Long id, Map<String, Object> params);
+
+//    /**
+//     * 更新一个资源对象（整个对象替换，属性的null值也会更新进去）
+//     *
+//     * @return 返回完整的资源对象
+//     */
+//    @ApiOperation(value = "更新一个资源对象（更新对象里全部属性，即整个对象替换）", tags = {"order"}, nickname = "putUpdateOrder")
+//    @ApiResponses(value = {@ApiResponse(code = 200, message = "操作是否成功,000000:成功，否则失败")})
+//    ResultDTO<OrderResDto> putUpdateOrder(Long id, OrderReqDto reqDto);
 
 }

@@ -3,6 +3,7 @@ package com.bizcenter.freight.infrastructure.persistence.po;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.bitsun.core.common.mybatis.handler.JsonTypeHandler;
+import com.bitsun.core.common.mybatis.handler.JsonbTypeHandler;
 import com.bitsun.core.framwork.infrastructure.persistence.po.BasePo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -92,7 +93,7 @@ public class OrderPo extends BasePo<OrderPo> implements Serializable{
     /**
      * 扩展信息 jsonb
      */
-    @TableField(typeHandler = JsonTypeHandler.class)
+    @TableField(typeHandler = JsonbTypeHandler.class)
     private String extData;
 
     /**

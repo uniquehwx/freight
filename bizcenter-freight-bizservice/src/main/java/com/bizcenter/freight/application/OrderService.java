@@ -1,5 +1,6 @@
 package com.bizcenter.freight.application;
 
+import com.bitsun.core.common.web.ResultDTO;
 import com.bitsun.core.framwork.application.IApplicationService;
 import com.bitsun.core.common.persistence.Pager;
 import com.bizcenter.freight.dto.req.OrderReqDto;
@@ -73,4 +74,10 @@ public interface OrderService extends IApplicationService{
      */
     boolean updateAllProps(Long id, OrderReqDto reqDto);
 
+    /**
+     * 取消订单操作
+     * @param id
+     * @return
+     */
+    boolean cancelOrder(Long id);
 }

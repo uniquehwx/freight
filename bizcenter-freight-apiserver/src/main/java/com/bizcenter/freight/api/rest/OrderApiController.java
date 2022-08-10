@@ -46,19 +46,22 @@ public class OrderApiController implements OrderApi {
         return ResultDTO.ok(resDto);
     }
 
-    @Override
-    @DeleteMapping(value = "/{ids}", produces = {"application/json"})
-    public ResultDTO<Void> deleteOrder(
-        @ApiParam(value = "要删除的对象主键，多个对象主键可以用英文逗号隔开", required = true) @PathVariable("ids") String ids) {
-        boolean bl = orderService.deleteByIds(ids);
-        return ResultDTO.ok();
-    }
 
     @Override
-    @GetMapping(produces = {"application/json"})
-    public ResultDTO<Pager<OrderResDto>> getOrderList(@ApiIgnore @RequestParam Map<String, Object> params) {
-        Pager<OrderResDto> resDtoPager = orderService.doPager(params);
-        return ResultDTO.ok(resDtoPager);
+    @PatchMapping(value = "/{id}", produces = {"application/json"})
+    public ResultDTO<OrderResDto> patchUpdateOrder(@ApiParam(value = "对象ID", required = true) @PathVariable("id") Long id,
+                                                   @ApiParam(value = "要修改的对象，对象属性有值的才更新,即null值不更新", required = true) @Valid @RequestBody OrderReqDto reqDto) {
+        orderService.updateProps(id, reqDto);
+        OrderResDto resDto = orderService.selectOne(id);
+        return ResultDTO.ok(resDto);
+    }
+
+
+    @Override
+    @PatchMapping(value = "cancel/{id}", produces = {"application/json"})
+    public ResultDTO<Boolean> cancelOrder(@ApiParam(value = "对象ID", required = true) @PathVariable("id") Long id) {
+
+        return  ResultDTO.ok(orderService.cancelOrder(id));
     }
 
     @Override
@@ -68,37 +71,53 @@ public class OrderApiController implements OrderApi {
         return ResultDTO.ok(resDto);
     }
 
-    @Override
-    @GetMapping(value = "/one", produces = {"application/json"})
-    public ResultDTO<OrderResDto> getOneOrder(@ApiIgnore @RequestParam Map<String, Object> params) {
-        OrderResDto resDto = orderService.selectOne(params);
-        return ResultDTO.ok(resDto);
-    }
 
     @Override
-    @PatchMapping(value = "/map/{id}", produces = {"application/json"})
-    public ResultDTO<OrderResDto> updateOrder(@ApiParam(value = "对象ID", required = true) @PathVariable("id") Long id,
-    @ApiIgnore @RequestParam Map<String, Object> params) {
-        orderService.updateProps(id, params);
-        OrderResDto resDto = orderService.selectOne(id);
-        return ResultDTO.ok(resDto);
+    @GetMapping(produces = {"application/json"})
+    public ResultDTO<Pager<OrderResDto>> getOrderList(@ApiIgnore @RequestParam Map<String, Object> params) {
+        Pager<OrderResDto> resDtoPager = orderService.doPager(params);
+        return ResultDTO.ok(resDtoPager);
     }
+    //-----------------------------------------------------下面是不怎么需要的生成的接口信息
 
     @Override
-    @PatchMapping(value = "/{id}", produces = {"application/json"})
-    public ResultDTO<OrderResDto> patchUpdateOrder(@ApiParam(value = "对象ID", required = true) @PathVariable("id") Long id,
-        @ApiParam(value = "要修改的对象，对象属性有值的才更新,即null值不更新", required = true) @Valid @RequestBody OrderReqDto reqDto) {
-        orderService.updateProps(id, reqDto);
-        OrderResDto resDto = orderService.selectOne(id);
-        return ResultDTO.ok(resDto);
+    @DeleteMapping(value = "/{ids}", produces = {"application/json"})
+    public ResultDTO<Void> deleteOrder(
+        @ApiParam(value = "要删除的对象主键，多个对象主键可以用英文逗号隔开", required = true) @PathVariable("ids") String ids) {
+        boolean bl = orderService.deleteByIds(ids);
+        return ResultDTO.ok(bl);
     }
 
-    @Override
-    @PutMapping(value = "/{id}", produces = {"application/json"})
-    public ResultDTO<OrderResDto> putUpdateOrder(@ApiParam(value = "对象ID", required = true) @PathVariable("id") Long id,
-        @ApiParam(value = "要修改的对象,对象属性全部更新", required = true) @Valid @RequestBody OrderReqDto reqDto) {
-        orderService.updateAllProps(id, reqDto);
-        OrderResDto resDto = orderService.selectOne(id);
-        return ResultDTO.ok(resDto);
-    }
+//    @Override
+//    @GetMapping(produces = {"application/json"})
+//    public ResultDTO<Pager<OrderResDto>> getOrderList(@ApiIgnore @RequestParam Map<String, Object> params) {
+//        Pager<OrderResDto> resDtoPager = orderService.doPager(params);
+//        return ResultDTO.ok(resDtoPager);
+//    }
+
+//    @Override
+//    @GetMapping(value = "/one", produces = {"application/json"})
+//    public ResultDTO<OrderResDto> getOneOrder(@ApiIgnore @RequestParam Map<String, Object> params) {
+//        OrderResDto resDto = orderService.selectOne(params);
+//        return ResultDTO.ok(resDto);
+//    }
+//
+//    @Override
+//    @PatchMapping(value = "/map/{id}", produces = {"application/json"})
+//    public ResultDTO<OrderResDto> updateOrder(@ApiParam(value = "对象ID", required = true) @PathVariable("id") Long id,
+//    @ApiIgnore @RequestParam Map<String, Object> params) {
+//        orderService.updateProps(id, params);
+//        OrderResDto resDto = orderService.selectOne(id);
+//        return ResultDTO.ok(resDto);
+//    }
+//
+//
+//    @Override
+//    @PutMapping(value = "/{id}", produces = {"application/json"})
+//    public ResultDTO<OrderResDto> putUpdateOrder(@ApiParam(value = "对象ID", required = true) @PathVariable("id") Long id,
+//        @ApiParam(value = "要修改的对象,对象属性全部更新", required = true) @Valid @RequestBody OrderReqDto reqDto) {
+//        orderService.updateAllProps(id, reqDto);
+//        OrderResDto resDto = orderService.selectOne(id);
+//        return ResultDTO.ok(resDto);
+//    }
 }

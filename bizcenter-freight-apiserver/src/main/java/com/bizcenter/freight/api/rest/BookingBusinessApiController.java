@@ -5,7 +5,7 @@ import com.bitsun.core.common.persistence.Pager;
 import com.bitsun.core.common.web.ResultDTO;
 import com.bizcenter.freight.dto.req.BookingBusinessReqDto;
 import com.bizcenter.freight.dto.res.BookingBusinessResDto;
-import com.bizcenter.freight.api.BookingBusinessApi;
+import com.bizcenter.freight.api.air.BookingBusinessApi;
 import io.swagger.annotations.ApiParam;
 import java.util.Map;
 import javax.validation.Valid;

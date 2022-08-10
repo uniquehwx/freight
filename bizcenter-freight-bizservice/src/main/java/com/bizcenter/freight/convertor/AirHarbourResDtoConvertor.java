@@ -2,7 +2,7 @@ package com.bizcenter.freight.convertor;
 
 import com.bitsun.core.common.convertor.IConvertor;
 import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.domain.model.AirHarbourEntity;
+import com.bizcenter.freight.domain.model.air.AirHarbourEntity;
 import com.bizcenter.freight.dto.res.AirHarbourResDto;
 import org.mapstruct.Mapper;
 /**

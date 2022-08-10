@@ -2,7 +2,7 @@ package com.bizcenter.freight.convertor;
 
 import com.bitsun.core.common.convertor.IConvertor;
 import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.domain.model.OrderEntity;
+import com.bizcenter.freight.domain.model.order.OrderEntity;
 import com.bizcenter.freight.dto.res.OrderResDto;
 import org.mapstruct.Mapper;
 /**
@@ -14,17 +14,17 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel="spring")
 public abstract class OrderResDtoConvertor implements IConvertor<OrderResDto,OrderEntity,String> {
 
-    public  Pager<OrderResDto> convertPoPager2ResDtoPager(Pager<String> poPager) {
-        if (poPager == null) {
+    public  Pager<OrderResDto> convertEntityPager2ResDtoPager(Pager<OrderEntity> eoPager) {
+        if (eoPager == null) {
             return null;
         }
 
         Pager<OrderResDto> resDtoPager = new Pager();
-        resDtoPager.setTotalCount(poPager.getTotalCount());
-        resDtoPager.setPageSize(poPager.getPageSize());
-        resDtoPager.setTotalPage(poPager.getTotalPage());
-        resDtoPager.setCurrentPage(poPager.getCurrentPage());
-        resDtoPager.setList(poList2DtoList(poPager.getList()));
+        resDtoPager.setTotalCount(eoPager.getTotalCount());
+        resDtoPager.setPageSize(eoPager.getPageSize());
+        resDtoPager.setTotalPage(eoPager.getTotalPage());
+        resDtoPager.setCurrentPage(eoPager.getCurrentPage());
+        resDtoPager.setList(entityList2DtoList(eoPager.getList()));
 
         return resDtoPager;
     }

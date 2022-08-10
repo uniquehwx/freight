@@ -4,6 +4,8 @@ import com.bitsun.core.common.persistence.Pager;
 import com.bizcenter.freight.application.AirCompanyService;
 import com.bizcenter.freight.convertor.AirCompanyReqDtoConvertor;
 import com.bizcenter.freight.convertor.AirCompanyResDtoConvertor;
+import com.bizcenter.freight.domain.model.air.AirCompanyEntity;
+import com.bizcenter.freight.domain.service.air.AirCompanyDomainService;
 import com.bizcenter.freight.dto.req.AirCompanyReqDto;
 import com.bizcenter.freight.dto.res.AirCompanyResDto;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Map;
 /**
  * 示例表，应用（业务编排）层实现
@@ -28,6 +31,10 @@ public class AirCompanyServiceImpl implements AirCompanyService {
     @Autowired
     private AirCompanyResDtoConvertor airCompanyResDtoConvertor;
 
+    @Autowired
+    private AirCompanyDomainService airCompanyDomainService;
+
+
 //    private IPService<AirCompanyPo> airCompanyPoService;
 
 //    @SuppressWarnings("SpringJavaAutowiringInspection")
@@ -39,11 +46,18 @@ public class AirCompanyServiceImpl implements AirCompanyService {
 
     @Override
     public AirCompanyResDto save(AirCompanyReqDto reqDto) {
-//        AirCompanyPo po = airCompanyReqDtoConvertor.dto2Po(reqDto);
-//        airCompanyPoService.save(po);
-//        AirCompanyResDto resDto = airCompanyResDtoConvertor.po2Dto(po);
-//        return resDto;
-        return  null;
+        AirCompanyEntity req = airCompanyReqDtoConvertor.dto2Entity(reqDto);
+        AirCompanyEntity airCompanyEntity = airCompanyDomainService.save(req);
+        AirCompanyResDto airCompanyResDto = airCompanyResDtoConvertor.entity2Dto(airCompanyEntity);
+        return  airCompanyResDto;
+    }
+
+    @Override
+    public List<AirCompanyResDto> addList(List<AirCompanyReqDto> reqDtoList) {
+        List<AirCompanyEntity> entityList = airCompanyReqDtoConvertor.dtoList2EntityList(reqDtoList);
+        List<AirCompanyEntity> list =  airCompanyDomainService.addList(entityList);
+        List<AirCompanyResDto> airCompanyResDtos = airCompanyResDtoConvertor.entityList2DtoList(list);
+        return airCompanyResDtos;
     }
 
     @Override
@@ -55,7 +69,7 @@ public class AirCompanyServiceImpl implements AirCompanyService {
 //        } catch (Exception e) {
 //            throw new AppException("参数错误：" + ids, ErrorCode.pc("417"), e);
 //        }
-        return  true;
+        return   airCompanyDomainService.deleteByIds(ids);
      }
 
     @Override
@@ -63,7 +77,10 @@ public class AirCompanyServiceImpl implements AirCompanyService {
 //        Pager<AirCompanyPo> poPager = airCompanyPoService.queryPage(params, AirCompanyPo.class);
 //        Pager<AirCompanyResDto> resDtoPager = airCompanyResDtoConvertor.convertPoPager2ResDtoPager(poPager);
 //        return resDtoPager;
-        return  null;
+        Pager<AirCompanyEntity> entityPager =  airCompanyDomainService.doPager(params);
+
+        Pager<AirCompanyResDto> airCompanyResDtoPager = airCompanyResDtoConvertor.convertEntityPager2ResDtoPager(entityPager);
+        return  airCompanyResDtoPager;
     }
 
     @Override
@@ -71,7 +88,26 @@ public class AirCompanyServiceImpl implements AirCompanyService {
 //        AirCompanyPo po = airCompanyPoService.getById(id);
 //        AirCompanyResDto resDto = airCompanyResDtoConvertor.po2Dto(po);
 //        return resDto;
-        return  null;
+        AirCompanyEntity companyEntity =  airCompanyDomainService.selectOne(id);
+        AirCompanyResDto resDto = airCompanyResDtoConvertor.entity2Dto(companyEntity);
+        return  resDto;
+    }
+
+    @Override
+    public boolean updateProps(Long id, AirCompanyReqDto reqDto) {
+         AirCompanyEntity req = airCompanyReqDtoConvertor.dto2Entity(reqDto);
+         req.setId(id);
+         boolean res =  airCompanyDomainService.updateProps(req);
+//        po.setId(id);
+//        return airCompanyPoService.updateById(po);
+        return  res;
+    }
+
+    @Override
+    public boolean updateProps(Long id, Map<String, Object> params) {
+//        UpdateWrapper<AirCompanyPo> updateWrapper = QueryParamUtils.updateWrapper4Map(AirCompanyPo::new, id, params);
+//        return airCompanyPoService.update(new AirCompanyPo(), updateWrapper);
+        return  true;
     }
 
     @Override
@@ -84,20 +120,10 @@ public class AirCompanyServiceImpl implements AirCompanyService {
         return  null;
     }
 
-    @Override
-    public boolean updateProps(Long id, Map<String, Object> params) {
-//        UpdateWrapper<AirCompanyPo> updateWrapper = QueryParamUtils.updateWrapper4Map(AirCompanyPo::new, id, params);
-//        return airCompanyPoService.update(new AirCompanyPo(), updateWrapper);
-        return  true;
-    }
 
-    @Override
-    public boolean updateProps(Long id, AirCompanyReqDto reqDto) {
-//        AirCompanyPo po = airCompanyReqDtoConvertor.dto2Po(reqDto);
-//        po.setId(id);
-//        return airCompanyPoService.updateById(po);
-        return  true;
-    }
+
+
+
 
 
     @Override
@@ -119,5 +145,7 @@ public class AirCompanyServiceImpl implements AirCompanyService {
 //        return airCompanyPoService.update(new AirCompanyPo(), updateWrapper);
           return  true;
     }
+
+
 
 }

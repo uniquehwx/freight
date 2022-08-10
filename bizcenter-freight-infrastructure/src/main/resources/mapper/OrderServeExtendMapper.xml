@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.operation.freight.infrastructure.persistence.dao.OrderServeExtendMapper">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.OrderServeExtendPo" id="orderServeExtendMap">
+        <id property="id" column="id"/>
+        <result property="remark" column="remark" />
+        <result property="deleted" column="deleted" />
+        <result property="appId" column="app_id" />
+        <result property="tenantId" column="tenant_id" />
+        <result property="createUserId" column="create_user_id" />
+        <result property="createUserName" column="create_user_name" />
+        <result property="createTime" column="create_time" />
+        <result property="modifyUserId" column="modify_user_id" />
+        <result property="modifyUserName" column="modify_user_name" />
+        <result property="modifyTime" column="modify_time" />
+        <result property="serveName" column="serve_name" />
+        <result property="serveType" column="serve_type" />
+        <result property="externalOrder" column="external_order" />
+        <result property="status" column="status" />
+    </resultMap>
+    <resultMap type="com.bizcenter.freight.infrastructure.persistence.po.OrderServeExtendPo" id="orderServeExtendAliasMap">
+        <id property="id" column="id"/>
+        <result property="remark" column="lc_order_serve_extend_remark" />
+        <result property="deleted" column="lc_order_serve_extend_deleted" />
+        <result property="appId" column="lc_order_serve_extend_app_id" />
+        <result property="tenantId" column="lc_order_serve_extend_tenant_id" />
+        <result property="createUserId" column="lc_order_serve_extend_create_user_id" />
+        <result property="createUserName" column="lc_order_serve_extend_create_user_name" />
+        <result property="createTime" column="lc_order_serve_extend_create_time" />
+        <result property="modifyUserId" column="lc_order_serve_extend_modify_user_id" />
+        <result property="modifyUserName" column="lc_order_serve_extend_modify_user_name" />
+        <result property="modifyTime" column="lc_order_serve_extend_modify_time" />
+        <result property="serveName" column="lc_order_serve_extend_serve_name" />
+        <result property="serveType" column="lc_order_serve_extend_serve_type" />
+        <result property="externalOrder" column="lc_order_serve_extend_external_order" />
+        <result property="status" column="lc_order_serve_extend_status" />
+    </resultMap>
+    <sql id="orderServeExtendColumns">
+         ${alias}.id, ${alias}.remark, ${alias}.deleted, ${alias}.tenant_id, ${alias}.create_user_id, ${alias}.create_user_name, ${alias}.create_time, ${alias}.modify_user_id, ${alias}.modify_user_name, ${alias}.modify_time, ${alias}.serve_name, ${alias}.serve_type, ${alias}.external_order, ${alias}.status
+    </sql>
+    <sql id="orderServeExtendAliasColumns">
+         ${alias}.id lc_order_serve_extend_id, ${alias}.remark lc_order_serve_extend_remark, ${alias}.deleted lc_order_serve_extend_deleted, ${alias}.tenant_id lc_order_serve_extend_tenant_id, ${alias}.create_user_id lc_order_serve_extend_create_user_id, ${alias}.create_user_name lc_order_serve_extend_create_user_name, ${alias}.create_time lc_order_serve_extend_create_time, ${alias}.modify_user_id lc_order_serve_extend_modify_user_id, ${alias}.modify_user_name lc_order_serve_extend_modify_user_name, ${alias}.modify_time lc_order_serve_extend_modify_time, ${alias}.serve_name lc_order_serve_extend_serve_name, ${alias}.serve_type lc_order_serve_extend_serve_type, ${alias}.external_order lc_order_serve_extend_external_order, ${alias}.status lc_order_serve_extend_status
+    </sql>
+</mapper>

@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import com.bitsun.core.common.validator.JsonValid;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -51,7 +53,7 @@ public class OrderReqDto implements Serializable{
      */
     @ApiModelProperty(value = "委托方联系人电话")
     @JsonProperty(index = 50)
-    private String clinetPhone;
+    private String clientPhone;
     /**
      * 父单单号 varchar
      */
@@ -75,7 +77,7 @@ public class OrderReqDto implements Serializable{
      */
     @ApiModelProperty(value = "供应商编码")
     @JsonProperty(index = 90)
-    private String supllierCode;
+    private String supplierCode;
     /**
      * 始发地编码 varchar
      */
@@ -111,7 +113,6 @@ public class OrderReqDto implements Serializable{
      */
     @ApiModelProperty(value = "扩展信息")
     @JsonProperty(index = 220)
-    @JsonValid
     private String extData;
     /**
      * 业务类型 int4
@@ -131,6 +132,14 @@ public class OrderReqDto implements Serializable{
     @ApiModelProperty(value = "业务员")
     @JsonProperty(index = 250)
     private String salesClerkCode;
+
+
+    /**
+     * 扩展服务 varchar
+     */
+    @ApiModelProperty(value = "扩展服务")
+    @JsonProperty(index = 251)
+    private List<ExtendServiceReqDto> extendService;
 
 }
 

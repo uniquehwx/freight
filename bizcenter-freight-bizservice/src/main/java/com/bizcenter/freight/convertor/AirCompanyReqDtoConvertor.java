@@ -1,7 +1,7 @@
 package com.bizcenter.freight.convertor;
 
 import com.bitsun.core.common.convertor.IConvertor;
-import com.bizcenter.freight.domain.model.AirCompanyEntity;
+import com.bizcenter.freight.domain.model.air.AirCompanyEntity;
 import com.bizcenter.freight.dto.req.AirCompanyReqDto;
 import org.mapstruct.Mapper;
 /**

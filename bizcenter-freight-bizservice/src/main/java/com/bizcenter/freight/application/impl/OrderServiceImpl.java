@@ -2,8 +2,10 @@ package com.bizcenter.freight.application.impl;
 
 import com.bitsun.core.common.persistence.Pager;
 import com.bizcenter.freight.application.OrderService;
+import com.bizcenter.freight.constants.OrderStatus;
 import com.bizcenter.freight.convertor.OrderReqDtoConvertor;
 import com.bizcenter.freight.convertor.OrderResDtoConvertor;
+import com.bizcenter.freight.domain.model.order.OrderEntity;
 import com.bizcenter.freight.domain.service.order.OrderDomainService;
 import com.bizcenter.freight.dto.req.OrderReqDto;
 import com.bizcenter.freight.dto.res.OrderResDto;
@@ -42,18 +44,42 @@ public class OrderServiceImpl implements OrderService {
 //        this.orderPoService = new BasePService(orderMapper);
 //    }
 
-
-
     @Override
     public OrderResDto save(OrderReqDto reqDto) {
-//        OrderPo po = orderReqDtoConvertor.dto2Po(reqDto);
-//        orderPoService.save(po);
+        OrderEntity req = orderReqDtoConvertor.dto2Entity(reqDto);
+        OrderEntity entity = orderDomainService.addOrder(req);
+        OrderResDto res = orderResDtoConvertor.entity2Dto(entity);
+        return res;
+    }
+
+    @Override
+    public OrderResDto selectOne(Long id) {
+//        OrderPo po = orderPoService.getById(id);
 //        OrderResDto resDto = orderResDtoConvertor.po2Dto(po);
-//
-//        OrderEntity orderEntity = orderReqDtoConvertor.dto2Entity(reqDto);
-//        orderDomainService.addOrder(orderRepository);
 //        return resDto;
-        return null;
+        OrderEntity entity = orderDomainService.selectOne(id);
+        OrderResDto res = orderResDtoConvertor.entity2Dto(entity);
+        return res;
+    }
+
+    @Override
+    public boolean updateProps(Long id, OrderReqDto reqDto) {
+        OrderEntity entity = orderReqDtoConvertor.dto2Entity(reqDto);
+        entity.setId(id);
+
+//        OrderPo po = orderReqDtoConvertor.dto2Po(reqDto);
+//        po.setId(id);
+//        return orderPoService.updateById(po);
+        return  orderDomainService.update(entity);
+    }
+
+    @Override
+    public Pager<OrderResDto> doPager(Map<String, Object> params) {
+        Pager<OrderEntity> orderEntity = orderDomainService.doPager(params);
+//        Pager<OrderPo> poPager = orderPoService.queryPage(params, OrderPo.class);
+        Pager<OrderResDto> resDtoPager = orderResDtoConvertor.convertEntityPager2ResDtoPager(orderEntity);
+//        return resDtoPager;
+        return resDtoPager;
     }
 
     @Override
@@ -68,21 +94,9 @@ public class OrderServiceImpl implements OrderService {
         return  true;
      }
 
-    @Override
-    public Pager<OrderResDto> doPager(Map<String, Object> params) {
-//        Pager<OrderPo> poPager = orderPoService.queryPage(params, OrderPo.class);
-//        Pager<OrderResDto> resDtoPager = orderResDtoConvertor.convertPoPager2ResDtoPager(poPager);
-//        return resDtoPager;
-        return null;
-    }
 
-    @Override
-    public OrderResDto selectOne(Long id) {
-//        OrderPo po = orderPoService.getById(id);
-//        OrderResDto resDto = orderResDtoConvertor.po2Dto(po);
-//        return resDto;
-        return null;
-    }
+
+
 
     @Override
     public OrderResDto selectOne(Map<String, Object> params) {
@@ -101,13 +115,7 @@ public class OrderServiceImpl implements OrderService {
         return true;
         }
 
-    @Override
-    public boolean updateProps(Long id, OrderReqDto reqDto) {
-//        OrderPo po = orderReqDtoConvertor.dto2Po(reqDto);
-//        po.setId(id);
-//        return orderPoService.updateById(po);
-        return true;
-    }
+
 
 
     @Override
@@ -128,6 +136,18 @@ public class OrderServiceImpl implements OrderService {
 //        });
 //        return orderPoService.update(new OrderPo(), updateWrapper);
         return true;
+    }
+
+    @Override
+    public boolean cancelOrder(Long id) {
+        OrderEntity entity = new OrderEntity();
+        entity.setId(id);
+        entity.setTradeStatus(OrderStatus.cancel);
+//        OrderPo po = orderReqDtoConvertor.dto2Po(reqDto);
+//        po.setId(id);
+//        return orderPoService.updateById(po);
+
+        return orderDomainService.update(entity);
     }
 
 }

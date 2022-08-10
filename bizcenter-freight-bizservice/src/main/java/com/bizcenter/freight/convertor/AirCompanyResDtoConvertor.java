@@ -2,7 +2,7 @@ package com.bizcenter.freight.convertor;
 
 import com.bitsun.core.common.convertor.IConvertor;
 import com.bitsun.core.common.persistence.Pager;
-import com.bizcenter.freight.domain.model.AirCompanyEntity;
+import com.bizcenter.freight.domain.model.air.AirCompanyEntity;
 import com.bizcenter.freight.dto.res.AirCompanyResDto;
 import org.mapstruct.Mapper;
 /**
@@ -14,7 +14,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel="spring")
 public abstract class AirCompanyResDtoConvertor implements IConvertor<AirCompanyResDto,AirCompanyEntity,String> {
 
-    public  Pager<AirCompanyResDto> convertPoPager2ResDtoPager(Pager<String> poPager) {
+    public  Pager<AirCompanyResDto> convertEntityPager2ResDtoPager(Pager<AirCompanyEntity> poPager) {
         if (poPager == null) {
             return null;
         }
@@ -24,7 +24,7 @@ public abstract class AirCompanyResDtoConvertor implements IConvertor<AirCompany
         resDtoPager.setPageSize(poPager.getPageSize());
         resDtoPager.setTotalPage(poPager.getTotalPage());
         resDtoPager.setCurrentPage(poPager.getCurrentPage());
-        resDtoPager.setList(poList2DtoList(poPager.getList()));
+        resDtoPager.setList(entityList2DtoList(poPager.getList()));
 
         return resDtoPager;
     }

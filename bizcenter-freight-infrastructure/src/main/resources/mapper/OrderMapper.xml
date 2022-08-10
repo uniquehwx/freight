@@ -54,7 +54,7 @@
         <result property="modifyUserId" column="lc_order_modify_user_id" />
         <result property="modifyUserName" column="lc_order_modify_user_name" />
         <result property="modifyTime" column="lc_order_modify_time" />
-        <result property="extData" column="lc_order_ext_data" typeHandler="com.bitsun.core.common.mybatis.handler.JsonbTypeHandler"/>
+        <result property="extData" column="lc_order_ext_data" typeHandler="com.bitsun.core.common.mybatis.handler.JsonTypeHandler"/>
         <result property="businessType" column="lc_order_business_type" />
         <result property="completionTime" column="lc_order_completion_time" />
         <result property="salesClerkCode" column="lc_order_sales_clerk_code" />

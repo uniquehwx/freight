@@ -5,6 +5,7 @@ import com.bitsun.core.common.persistence.Pager;
 import com.bizcenter.freight.dto.req.AirCompanyReqDto;
 import com.bizcenter.freight.dto.res.AirCompanyResDto;
 
+import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 
@@ -73,4 +74,10 @@ public interface AirCompanyService extends IApplicationService{
      */
     boolean updateAllProps(Long id, AirCompanyReqDto reqDto);
 
+    /**
+     * 批量保持处理
+     * @param reqDtoList
+     * @return
+     */
+    List<AirCompanyResDto> addList(List<AirCompanyReqDto> reqDtoList);
 }
